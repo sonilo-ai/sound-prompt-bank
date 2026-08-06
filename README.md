@@ -35,7 +35,7 @@ Every entry ships with the audio its prompt actually generated — click to play
 | healing glow | warm swelling pad, wind chimes, soft harp glissando upward | [▶ healing-glow.mp3](./bank/sfx/samples/magic/healing-glow.mp3) |
 | portal open | deep whoosh, electric hum, crackling energy, rising sweep | [▶ portal-open.mp3](./bank/sfx/samples/magic/portal-open.mp3) |
 | transformation | granular sparkle, fast pitch rise, resolving crystalline hit | [▶ transformation.mp3](./bank/sfx/samples/magic/transformation.mp3) |
-| fairy dust | delicate high tinkles, fluttering shimmer, short sparkle trail | [▶ fairy-dust.mp3](./bank/sfx/samples/magic/fairy-dust.mp3) |
+| fairy dust | delicate high bell tinkles, soft glittering shimmer, quick fading sparkle trail | [▶ fairy-dust.mp3](./bank/sfx/samples/magic/fairy-dust.mp3) |
 
 Generated with `text_to_sfx`, unedited output, first take unless noted.
 

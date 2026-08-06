@@ -57,7 +57,7 @@ entries:
   - id: fairy-dust
     sample: samples/magic/fairy-dust.mp3
     want: "fairy dust"
-    prompt: "delicate high tinkles, fluttering shimmer, short sparkle trail"
+    prompt: "delicate high bell tinkles, soft glittering shimmer, quick fading sparkle trail"
     endpoint: text_to_sfx
     duration_hint: "1.5–2.5 s"
     tags: [magic, light, delicate]
