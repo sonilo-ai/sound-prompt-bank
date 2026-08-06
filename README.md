@@ -24,6 +24,21 @@ Every file: a domain, its working vocabulary (the palette), entries
 (want → prompt), and domain tips. Machine-readable YAML by design — agents
 and apps can load entries directly; the docs are just a rendering.
 
+## Hear it
+
+Every entry ships with the audio its prompt actually generated — click to play:
+
+| Want | Prompt → | Sample |
+| --- | --- | --- |
+| spell cast | bright glassy shimmer, ascending chimes, airy whoosh, soft bell tail | [▶ spell-cast.mp3](./bank/sfx/samples/magic/spell-cast.mp3) |
+| dark magic | low sub rumble, reversed whoosh into deep metallic impact, long dark reverb tail | [▶ dark-magic.mp3](./bank/sfx/samples/magic/dark-magic.mp3) |
+| healing glow | warm swelling pad, wind chimes, soft harp glissando upward | [▶ healing-glow.mp3](./bank/sfx/samples/magic/healing-glow.mp3) |
+| portal open | deep whoosh, electric hum, crackling energy, rising sweep | [▶ portal-open.mp3](./bank/sfx/samples/magic/portal-open.mp3) |
+| transformation | granular sparkle, fast pitch rise, resolving crystalline hit | [▶ transformation.mp3](./bank/sfx/samples/magic/transformation.mp3) |
+| fairy dust | delicate high tinkles, fluttering shimmer, short sparkle trail | [▶ fairy-dust.mp3](./bank/sfx/samples/magic/fairy-dust.mp3) |
+
+Generated with `text_to_sfx`, unedited output, first take unless noted.
+
 ## How to use
 
 **Humans:** find the entry closest to what you want, use its prompt as the
