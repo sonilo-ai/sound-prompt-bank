@@ -26,7 +26,9 @@ and apps can load entries directly; the docs are just a rendering.
 
 ## Hear it
 
-Every entry ships with the audio its prompt actually generated — click to play:
+**▶ [Play every sample in the browser](https://sonilo-ai.github.io/sound-prompt-bank/)** — inline players, no download.
+
+Every entry ships with the audio its prompt actually generated (file links below download/raw):
 
 | Want | Prompt → | Sample |
 | --- | --- | --- |
