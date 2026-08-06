@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sound Prompt Bank — hear every prompt</title>
+<style>
+  :root { --ink:#0a0a0a; --paper:#ffffff; --mute:#6b6b6b; --line:#e6e6e6; }
+  * { box-sizing:border-box; margin:0; }
+  body { font-family:-apple-system,'Helvetica Neue',Arial,sans-serif; background:var(--paper); color:var(--ink); max-width:880px; margin:0 auto; padding:48px 20px 96px; }
+  h1 { font-size:28px; letter-spacing:-.02em; }
+  .sub { color:var(--mute); margin:8px 0 40px; line-height:1.5; }
+  .sub a { color:var(--ink); }
+  h2 { font-size:13px; text-transform:uppercase; letter-spacing:.12em; color:var(--mute); margin:40px 0 12px; }
+  .entry { display:grid; grid-template-columns:1fr 300px; gap:16px; align-items:center; padding:14px 0; border-top:1px solid var(--line); }
+  .entry:last-child { border-bottom:1px solid var(--line); }
+  .want { font-weight:600; }
+  .prompt { color:var(--mute); font-size:14px; line-height:1.45; margin-top:2px; }
+  audio { width:300px; height:36px; }
+  .pending { color:var(--mute); font-size:13px; font-style:italic; }
+  @media (max-width:640px){ .entry{grid-template-columns:1fr} audio{width:100%} }
+</style></head><body>
+<h1>Sound Prompt Bank</h1>
+<p class="sub">Intent language in, acoustic language out — and the audio each prompt actually generated, unedited.
+Prompts, schema, and machine-readable YAML: <a href="https://github.com/sonilo-ai/sound-prompt-bank">github.com/sonilo-ai/sound-prompt-bank</a></p>
+<div id="bank"></div>
+<script>
+const rows = [{"domain": "scene-moods", "mode": "music", "want": "epic music for a product video", "prompt": "Kinetic action-sports score for a 10-second product film. Gritty live drums and distorted bass, builds tension over the first half and peaks hard near the end. Modern, confident, cinematic. No vocals, no EDM drop, no orchestral swell.", "src": null}, {"domain": "scene-moods", "mode": "music", "want": "background music for talking video", "prompt": "Warm, unobtrusive bed for a founder interview. Soft keys and muted guitar, slow pulse, stays out of the way of the voice. No drums entering mid-phrase, no melody hooks, no vocals.", "src": null}, {"domain": "scene-moods", "mode": "music", "want": "chill outro music", "prompt": "Cozy vlog outro bed. Soft felt piano and light acoustic guitar, gentle sustained warmth that eases down toward the end. Intimate, unhurried. No vocals, no lo-fi crackle, no percussion build.", "src": null}, {"domain": "scene-moods", "mode": "music", "want": "hype music for a launch teaser", "prompt": "Launch-trailer score. Sparse pulsing synth opening, tension layering in as the cuts accelerate, a drop to near-silence before the product reveal, then the biggest hit of the track from the reveal onward. No vocals, no orchestral swell.", "src": null}, {"domain": "scene-moods", "mode": "music", "want": "music for a before/after video", "prompt": "Two-section piece: restrained minimal bed under the 'before' half \u2014 muted keys, low pulse \u2014 then opening up warm and full when the 'after' appears, resolving confident from there to the end. No vocals, no EDM drop.", "src": null}, {"domain": "scene-moods", "mode": "music", "want": "not sure what style fits", "prompt": "Three creative directions for this cut. One: orchestral-cinematic, strings-led, building to a full swell. Two: electronic-kinetic, driving synth bass and tight percussion. Three: minimal-percussive, sparse hits and sub pulses with wide space. No vocals in any direction.", "src": null}, {"domain": "action-outdoor", "mode": "sfx", "want": "bike riding on gravel", "prompt": "knobby tire biting packed dirt and loose gravel, small stones kicking off the tread", "src": null}, {"domain": "action-outdoor", "mode": "sfx", "want": "bike over bumps", "prompt": "bike over roots and rock: chain slapping the frame, suspension compressing and rebounding", "src": null}, {"domain": "action-outdoor", "mode": "sfx", "want": "braking sound", "prompt": "disc brake engaging, pads biting the rotor, front tire slowing on a loose surface", "src": null}, {"domain": "action-outdoor", "mode": "sfx", "want": "skid / drift", "prompt": "rear wheel breaking traction in a berm, a wide fan of dirt and gravel spraying across the frame", "src": null}, {"domain": "action-outdoor", "mode": "sfx", "want": "jump landing", "prompt": "both wheels landing off a small drop, a compression thud into dirt, trail ambience opening up", "src": null}, {"domain": "action-outdoor", "mode": "sfx", "want": "outdoor scene background", "prompt": "Mountain bike descending a damp dirt-and-gravel forest trail, natural outdoor ambience, overcast morning", "src": null}, {"domain": "magic", "mode": "sfx", "want": "spell cast", "prompt": "bright glassy shimmer with ascending chimes, airy whoosh, soft bell tail", "src": "bank/sfx/samples/magic/spell-cast.mp3"}, {"domain": "magic", "mode": "sfx", "want": "dark magic", "prompt": "low sub rumble, reversed whoosh into deep metallic impact, long dark reverb tail", "src": "bank/sfx/samples/magic/dark-magic.mp3"}, {"domain": "magic", "mode": "sfx", "want": "healing glow", "prompt": "warm swelling pad, gentle wind chimes, soft harp glissando upward, airy sparkle decay", "src": "bank/sfx/samples/magic/healing-glow.mp3"}, {"domain": "magic", "mode": "sfx", "want": "portal open", "prompt": "deep whoosh, electric hum, crackling energy, rising sweep into reverb bloom", "src": "bank/sfx/samples/magic/portal-open.mp3"}, {"domain": "magic", "mode": "sfx", "want": "transformation", "prompt": "granular sparkle texture, fast pitch rise, resolving crystalline hit", "src": "bank/sfx/samples/magic/transformation.mp3"}, {"domain": "magic", "mode": "sfx", "want": "fairy dust", "prompt": "delicate high bell tinkles, soft glittering shimmer, quick fading sparkle trail", "src": "bank/sfx/samples/magic/fairy-dust.mp3"}, {"domain": "quiet-interior", "mode": "sfx", "want": "office background sound", "prompt": "quiet office interior, low room tone, distant HVAC hum, occasional muffled activity beyond the wall", "src": null}, {"domain": "quiet-interior", "mode": "sfx", "want": "someone shifting in a chair", "prompt": "wooden office chair creaking as weight shifts, fabric brushing the seat", "src": null}, {"domain": "quiet-interior", "mode": "sfx", "want": "handling papers", "prompt": "loose papers shuffling and stacking on a wooden desk, a page turning", "src": null}, {"domain": "quiet-interior", "mode": "sfx", "want": "putting a cup down", "prompt": "ceramic mug setting down on a wooden desktop, a soft clink and slide", "src": null}, {"domain": "quiet-interior", "mode": "sfx", "want": "door closing", "prompt": "interior wooden door clicking shut, latch engaging, brief room-tone shift", "src": null}];
+const bank = document.getElementById('bank');
+let cur = '';
+for (const r of rows) {
+  const key = r.mode + ' / ' + r.domain;
+  if (key !== cur) { cur = key; const h = document.createElement('h2'); h.textContent = key; bank.appendChild(h); }
+  const div = document.createElement('div'); div.className = 'entry';
+  const left = document.createElement('div');
+  const w = document.createElement('div'); w.className = 'want'; w.textContent = r.want;
+  const p = document.createElement('div'); p.className = 'prompt'; p.textContent = r.prompt;
+  left.append(w, p);
+  div.appendChild(left);
+  if (r.src) { const a = document.createElement('audio'); a.controls = true; a.preload = 'none'; a.src = r.src; div.appendChild(a); }
+  else { const s = document.createElement('span'); s.className = 'pending'; s.textContent = 'sample coming'; div.appendChild(s); }
+  bank.appendChild(div);
+}
+</script>
+</body></html>
