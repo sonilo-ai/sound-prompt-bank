@@ -1,0 +1,60 @@
+domain: scene-moods
+mode: music
+formula: "genre + energy arc + hero moment + instrumentation + exclusions"
+core_rule: >
+  Quality tracks consistency, not eloquence. The prompt wins when it mirrors
+  what's on screen — same subject, same rhythm, same emphasized moments — not
+  when it's beautifully written. Spend the words on style; anchor moments to
+  what happens on screen ("when the rider lands"), never exact timestamps.
+
+vocabulary:
+  energy_arcs: [builds from sparse to driving, sustained low simmer, peaks near the end, drop to near-silence then the biggest hit, stays out of the way]
+  registers: [product-film score, founder-interview bed, cozy vlog bed, launch-trailer score, before/after reveal]
+  exclusions: [no vocals, no EDM drop, no orchestral swell, no lo-fi crackle, no melody hooks, no drums entering mid-phrase]
+
+entries:
+  - id: action-product-film
+    want: "epic music for a product video"
+    prompt: "Kinetic action-sports score for a 10-second product film. Gritty live drums and distorted bass, builds tension over the first half and peaks hard near the end. Modern, confident, cinematic. No vocals, no EDM drop, no orchestral swell."
+    endpoint: video_to_music
+    tags: [action, product, drums]
+
+  - id: interview-bed
+    want: "background music for talking video"
+    prompt: "Warm, unobtrusive bed for a founder interview. Soft keys and muted guitar, slow pulse, stays out of the way of the voice. No drums entering mid-phrase, no melody hooks, no vocals."
+    endpoint: video_to_music
+    notes: "Dialogue footage: set preserve_speech=true; ducking is on by default in async mode."
+    tags: [interview, bed, warm]
+
+  - id: cozy-vlog-outro
+    want: "chill outro music"
+    prompt: "Cozy vlog outro bed. Soft felt piano and light acoustic guitar, gentle sustained warmth that eases down toward the end. Intimate, unhurried. No vocals, no lo-fi crackle, no percussion build."
+    endpoint: video_to_music
+    tags: [vlog, cozy, outro]
+
+  - id: launch-teaser
+    want: "hype music for a launch teaser"
+    prompt: "Launch-trailer score. Sparse pulsing synth opening, tension layering in as the cuts accelerate, a drop to near-silence before the product reveal, then the biggest hit of the track from the reveal onward. No vocals, no orchestral swell."
+    endpoint: video_to_music
+    notes: "Anchor the drop to the on-screen reveal, not a timestamp — 'drop exactly at 12.5s' does not parse; 'when the product appears' does."
+    tags: [trailer, tension, reveal]
+
+  - id: before-after-reveal
+    want: "music for a before/after video"
+    prompt: "Two-section piece: restrained minimal bed under the 'before' half — muted keys, low pulse — then opening up warm and full when the 'after' appears, resolving confident from there to the end. No vocals, no EDM drop."
+    endpoint: video_to_music
+    notes: "Section-shaped language parses into a segments plan on the backend; text it can't parse falls back to a whole-prompt style hint."
+    tags: [before-after, sections, reveal]
+
+  - id: three-directions
+    want: "not sure what style fits"
+    prompt: "Three creative directions for this cut. One: orchestral-cinematic, strings-led, building to a full swell. Two: electronic-kinetic, driving synth bass and tight percussion. Three: minimal-percussive, sparse hits and sub pulses with wide space. No vocals in any direction."
+    endpoint: video_to_music
+    notes: "Run with variants_num=3 — three named directions, not three rerolls. Mux each onto the draft cut and judge against picture. Cost multiplies linearly."
+    tags: [variants, exploration]
+
+tips:
+  - "Write the five-line brief first: style/register, energy arc, hero moment, instrumentation, exclusions."
+  - "AI-generated footage: reverse-derive the brief from the video-gen prompt — it encodes the beats for free. But the rendered pixels outrank the prompt."
+  - "Never write mix directions ('quiet', 'louder drums') — state the role instead ('background bed', 'drums carry the track')."
+  - "Exclusions are best-effort: if an excluded element keeps returning, strengthen the positive description instead of stacking negatives."

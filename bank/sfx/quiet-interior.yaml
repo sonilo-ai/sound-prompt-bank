@@ -1,0 +1,50 @@
+domain: quiet-interior
+mode: sfx
+formula: "source + material + action (sparse beats over an ambience bed)"
+core_rule: >
+  Quiet footage uses the same physics language with sparser beats — an
+  ambience bed plus the two or three sound events actually visible. Don't
+  invent activity the frame doesn't show.
+
+vocabulary:
+  sources: [chair, papers, keyboard, mug, door, footsteps, clothing]
+  materials: [wood, ceramic, paper, fabric, carpet, glass]
+  actions: [creaking, shuffling, tapping, setting down, clicking shut, brushing]
+
+entries:
+  - id: office-bed
+    want: "office background sound"
+    prompt: "quiet office interior, low room tone, distant HVAC hum, occasional muffled activity beyond the wall"
+    endpoint: video_to_sfx
+    notes: "Global prompt / ambience bed. Keep it one line: setting, materials, ambience."
+    tags: [ambience, office, roomtone]
+
+  - id: chair-creak
+    want: "someone shifting in a chair"
+    prompt: "wooden office chair creaking as weight shifts, fabric brushing the seat"
+    endpoint: video_to_sfx
+    duration_hint: "segment on the visible movement"
+    tags: [chair, creak, interior]
+
+  - id: papers
+    want: "handling papers"
+    prompt: "loose papers shuffling and stacking on a wooden desk, a page turning"
+    endpoint: video_to_sfx
+    tags: [paper, desk, shuffle]
+
+  - id: mug-set-down
+    want: "putting a cup down"
+    prompt: "ceramic mug setting down on a wooden desktop, a soft clink and slide"
+    endpoint: video_to_sfx
+    tags: [mug, ceramic, clink]
+
+  - id: door-close
+    want: "door closing"
+    prompt: "interior wooden door clicking shut, latch engaging, brief room-tone shift"
+    endpoint: video_to_sfx
+    tags: [door, latch, interior]
+
+tips:
+  - "Talking-head clip = one ambience bed + two or three segments, not thirty."
+  - "Footage with dialogue: handle speech on the music side (preserve_speech) — SFX segments stay on visible physical events only."
+  - "An uncovered tail simply gets no generated SFX — segments don't have to reach the end of the video."

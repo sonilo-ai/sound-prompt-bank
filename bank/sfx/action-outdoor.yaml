@@ -1,0 +1,57 @@
+domain: action-outdoor
+mode: sfx
+formula: "source + material + action"
+core_rule: >
+  Concrete nouns and material verbs — bite, slap, sizzle, clink, crunch —
+  never abstractions ("exciting sounds") or mix directions ("loud",
+  "punchy"; levels are not promptable). One dominant sound bundle per
+  segment: one physical event plus its immediate by-products.
+
+vocabulary:
+  sources: [tire, chain, suspension, disc brake, wheel, boot, board, rope]
+  materials: [packed dirt, loose gravel, rock, roots, mud, metal frame, rotor, berm]
+  actions: [biting, slapping, compressing, rebounding, engaging, breaking traction, spraying, landing, kicking off]
+
+entries:
+  - id: tire-on-gravel
+    want: "bike riding on gravel"
+    prompt: "knobby tire biting packed dirt and loose gravel, small stones kicking off the tread"
+    endpoint: video_to_sfx
+    tags: [mtb, tire, gravel]
+
+  - id: rough-terrain
+    want: "bike over bumps"
+    prompt: "bike over roots and rock: chain slapping the frame, suspension compressing and rebounding"
+    endpoint: video_to_sfx
+    tags: [mtb, chain, suspension]
+
+  - id: braking
+    want: "braking sound"
+    prompt: "disc brake engaging, pads biting the rotor, front tire slowing on a loose surface"
+    endpoint: video_to_sfx
+    tags: [brake, metal, friction]
+
+  - id: drift-spray
+    want: "skid / drift"
+    prompt: "rear wheel breaking traction in a berm, a wide fan of dirt and gravel spraying across the frame"
+    endpoint: video_to_sfx
+    tags: [drift, gravel, spray]
+
+  - id: jump-landing
+    want: "jump landing"
+    prompt: "both wheels landing off a small drop, a compression thud into dirt, trail ambience opening up"
+    endpoint: video_to_sfx
+    tags: [landing, impact, thud]
+
+  - id: scene-bed-forest-trail
+    want: "outdoor scene background"
+    prompt: "Mountain bike descending a damp dirt-and-gravel forest trail, natural outdoor ambience, overcast morning"
+    endpoint: video_to_sfx
+    notes: "This is the global `prompt` field — the ambience bed under the segments, one line: setting, materials, ambience."
+    tags: [ambience, bed, forest]
+
+tips:
+  - "Segment boundaries go on cut points or action beats, never even time splits."
+  - "Mark the 1–2 hero beats the audio must nail; give each its own segment."
+  - "Wrong sound identity → the segment names the wrong source/material. Fix nouns before adjectives."
+  - "Quiet footage works the same with sparser beats — don't force segments onto footage with three sound events."
