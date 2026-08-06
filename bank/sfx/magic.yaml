@@ -60,6 +60,7 @@ entries:
     prompt: "delicate high bell tinkles, soft glittering shimmer, quick fading sparkle trail"
     endpoint: text_to_sfx
     duration_hint: "1.5–2.5 s"
+    notes: "Second revision (v1 'fluttering shimmer' generated wing-like noise). Current take is close but not perfect — if steering further, swap 'sparkle trail' for 'soft bell decay' from the tail palette."
     tags: [magic, light, delicate]
 
 tips:
